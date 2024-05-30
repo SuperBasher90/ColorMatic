@@ -1,0 +1,47 @@
+<script>
+
+const p = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+
+
+
+function wheel(str,count) {
+	var arr = []
+	if(count>0) {
+		for(var i = 0; i < p.length; i++)
+		{
+			console.log("Looping")
+			var new_str = str + p[i];
+			arr.push(new_str)
+			var new_arr = wheel(new_str,count-1);
+			console.log(new_arr.length)
+			for(var x = 0;x < new_arr.length;x++) {
+				console.log("Added"+new_arr[x])
+				arr.push(new_arr[x])
+			}
+
+			
+		}
+	}
+	return arr
+}
+
+var colors = wheel("#",4)
+console.log(colors.length)
+for(c = 0;c < colors.length;c++) {
+	document.write("<div class=\"MyDIV\" style=\"background-color: "+colors[c]+";width: 100%\" title="+colors[c]+">&nbsp;</div>");
+	document.write("<div class=\"hide\" style=\"color: white;background-color:"+colors[c]+"\"><bold>"+colors[c]+"</bold></div>")
+}
+
+
+</script>
+<html>
+<style>
+.hide {
+  display: none;
+}
+
+.myDIV:hover + .hide {
+  display: block;
+}
+</style>
+</html>
